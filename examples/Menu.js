@@ -1,8 +1,68 @@
 import React, { Component, Fragment } from 'react';
+import styled, { css } from 'styled-components';
+
+const Container = styled.div`
+  min-width: 20rem;
+  position: relative;
+`;
+
+const reset = css`
+  border: 0;
+  padding: 0;
+  background: #fff;
+  font-size: 1rem;
+  font-family: inherit;
+  &::-moz-focus-inner {
+    border: 0;
+  }
+`;
+
+const Button = styled.button`
+  ${reset};
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 3px magenta;
+  }
+`;
+
+const MenuBox = styled.div`
+  position: absolute;
+  top: 3rem;
+  width: 8rem;
+  border-radius: 4px;
+`;
+
+const MenuItem = styled.button`
+  ${reset};
+  height: 48px;
+  width: 100%;
+  text-transform: capitalize;
+
+  &:first-child {
+    border-radius: 4px 4px 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 0 4px 4px;
+  }
+
+  &:hover {
+    background-color: #eee;
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: inset 0 0 0 3px magenta;
+  }
+`;
 
 class Menu extends Component {
   state = {
     open: false,
+    difficulty: 'easy',
   };
 
   buttonRef = React.createRef();
@@ -24,35 +84,50 @@ class Menu extends Component {
 
   toggle = () => (this.state.open ? this.close() : this.open());
 
-  handleKeyDown = e => {
-    if (e.keyCode === 27) this.close();
+  handleItemClick = ({ target }) => {
+    this.setState({ difficulty: target.textContent });
+    this.close();
   };
 
   render() {
-    const { open, highlighted } = this.state;
+    const { open, difficulty } = this.state;
     return (
-      <div onKeyDown={this.handleKeyDown}>
-        <button
+      <Container onKeyDown={({ keyCode }) => keyCode === 27 && this.close()}>
+        <Button
           aria-haspopup="true"
           aria-expanded={open}
           onClick={this.toggle}
-          ref={this.buttonRef}
+          innerRef={this.buttonRef}
         >
           Difficulty
-          <span aria-hidden="true">&#x25be;</span>
-        </button>
-        <div role="menu" hidden={!open}>
-          <button role="menuitem" tabIndex="-1" ref={this.firstChildRef}>
-            Easy
-          </button>
-          <button role="menuitem" tabIndex="-1">
-            Medium
-          </button>
-          <button role="menuitem" tabIndex="-1">
-            Hard
-          </button>
-        </div>
-      </div>
+          <span aria-hidden="true">{open ? '\u25B2' : '\u25BC'}</span>
+        </Button>
+        <MenuBox role="menu" hidden={!open}>
+          <MenuItem
+            role="menuitem"
+            tabIndex="-1"
+            onClick={this.handleItemClick}
+            innerRef={this.firstChildRef}
+          >
+            easy
+          </MenuItem>
+          <MenuItem
+            role="menuitem"
+            tabIndex="-1"
+            onClick={this.handleItemClick}
+          >
+            medium
+          </MenuItem>
+          <MenuItem
+            role="menuitem"
+            tabIndex="-1"
+            onClick={this.handleItemClick}
+          >
+            hard
+          </MenuItem>
+        </MenuBox>
+        <p>Difficulty set to: {difficulty}</p>
+      </Container>
     );
   }
 }
