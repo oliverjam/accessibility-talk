@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "mdx-deck deck.mdx --title 'Accessibility For Everyone'"
+    "start": "mdx-deck deck.mdx --title 'Accessibility For Everyone'",
+    "build": "mdx-deck build deck.mdx --title 'Accessibility For Everyone'"
   },
   "keywords": [],
   "author": "",
