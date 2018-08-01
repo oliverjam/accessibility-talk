@@ -53,7 +53,6 @@ It benefits more people than you might think.
 
 ### Permanent impairment
 
-
 10m people in the UK are disabled (~17% of the population)
 
 Half are over state pension age
@@ -130,7 +129,6 @@ Allow customisation/colour-blind mode
 
 May need to increase the text-size in my browser.
 
-
 Do not prevent zoom
 
 Scale UI based on font-size
@@ -145,7 +143,6 @@ Scale UI based on font-size
 
 May need to use a screen-magnifier.
 
-
 Show things in context
 
 Logical content flow
@@ -155,7 +152,6 @@ Logical content flow
 #### Blind
 
 Need to use a screenreader.
-
 
 Information isn't solely visual
 
@@ -167,7 +163,6 @@ Programmatic access to structured content
 
 May struggle to hear things.
 
-
 Provide text alternatives to audio content
 
 Transcripts and/or subtitles
@@ -177,7 +172,6 @@ Transcripts and/or subtitles
 #### Deaf
 
 Cannot hear anything. Sign language may be first language
-
 
 Subtitles can be hard to follow, may prefer signed content
 
@@ -189,7 +183,6 @@ Option for non-phone communication
 
 May struggle to use a mouse or touchscreen with fine control.
 
-
 Large interactive targets
 
 Lots of padding for links/buttons
@@ -199,7 +192,6 @@ Lots of padding for links/buttons
 #### Medium motor-impairment
 
 Have to use a keyboard instead of a mouse.
-
 
 DON'T DISABLE FOCUS OUTLINES
 
@@ -213,7 +205,6 @@ Ensure custom UI works without a mouse
 
 Uses voice-input instead of a mouse or keyboard.
 
-
 Test interface with speech-recognition software
 
 Logical labels as they have to describe UI elements
@@ -223,7 +214,6 @@ Logical labels as they have to describe UI elements
 #### Dyslexia
 
 May struggle to process written text or spell.
-
 
 Don't require exact spelling
 
@@ -237,7 +227,6 @@ Clear subheadings to divide content
 
 May struggle to process information.
 
-
 Clear, descriptive interface
 
 Avoid idioms or figures of speech
@@ -250,7 +239,6 @@ Maybe prefer plain language and simple colours
 
 May find it hard to concentrate.
 
-
 Don't distract the user!
 
 No popups or alerts during important tasks
@@ -260,7 +248,6 @@ No popups or alerts during important tasks
 #### Memory
 
 May struggle to remember previous information or get easily confused.
-
 
 Don't require memorising info from previous steps
 
@@ -375,11 +362,25 @@ Ensures dynamically updated content is read out.
 
 ---
 
-import Menu from './examples/Menu'
-
 ### Menu button
 
+import Menu from './examples/Menu'
+
 <Menu />
+
+---
+
+## Note on progressive enhancement
+
+Without JS most ARIA attributes are useless or actively harmful
+
+---
+
+### Tabs
+
+import Tabs from './examples/Tabs'
+
+<Tabs />
 
 ---
 
