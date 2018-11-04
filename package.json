@@ -11,6 +11,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "mdx-deck": "^1.0.3"
+    "mdx-deck": "^1.7.7"
   }
 }
