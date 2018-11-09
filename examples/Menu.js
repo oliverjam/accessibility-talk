@@ -33,6 +33,7 @@ const MenuBox = styled.div`
   top: 3rem;
   width: 8rem;
   border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 `;
 
 const MenuItem = styled.button`
