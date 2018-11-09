@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "assets": "cp -R assets/ dist/assets",
     "start": "mdx-deck deck.mdx --title 'Accessibility For Everyone'",
-    "build": "mdx-deck build deck.mdx --title 'Accessibility For Everyone'"
+    "build": "mdx-deck build deck.mdx --title 'Accessibility For Everyone' && npm run assets"
   },
   "keywords": [],
   "author": "",
