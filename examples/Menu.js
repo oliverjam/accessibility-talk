@@ -21,6 +21,8 @@ const Button = styled.button`
   ${reset};
   padding: 0.5rem 1rem;
   border-radius: 4px;
+  /* border: 2px solid; */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 
   &:focus {
     outline: 0;
@@ -64,15 +66,17 @@ class Menu extends Component {
   state = {
     open: false,
     difficulty: 'easy',
+    index: 0,
   };
 
   buttonRef = React.createRef();
   firstChildRef = React.createRef();
+  childRefs = [React.createRef(), React.createRef(), React.createRef()];
 
   open = () => {
     this.setState(
       ({ open }) => ({ open: !open }),
-      () => this.firstChildRef.current.focus()
+      () => this.childRefs[0].current.focus()
     );
   };
 
@@ -90,10 +94,28 @@ class Menu extends Component {
     this.close();
   };
 
+  handleKeyDown = ({ key }) => {
+    console.log(key);
+    switch (key) {
+      case 'Escape':
+        this.close();
+      case 'ArrowUp':
+        return this.setState(
+          prevState => ({ index: (prevState.index - 1 + 3) % 3 }),
+          () => this.childRefs[this.state.index].current.focus()
+        );
+      case 'ArrowDown':
+        return this.setState(
+          prevState => ({ index: (prevState.index + 1) % 3 }),
+          () => this.childRefs[this.state.index].current.focus()
+        );
+    }
+  };
+
   render() {
     const { open, difficulty } = this.state;
     return (
-      <Container onKeyDown={({ keyCode }) => keyCode === 27 && this.close()}>
+      <Container onKeyDown={this.handleKeyDown}>
         <Button
           aria-haspopup="true"
           aria-expanded={open}
@@ -108,7 +130,7 @@ class Menu extends Component {
             role="menuitem"
             tabIndex="-1"
             onClick={this.handleItemClick}
-            innerRef={this.firstChildRef}
+            innerRef={this.childRefs[0]}
           >
             easy
           </MenuItem>
@@ -116,6 +138,7 @@ class Menu extends Component {
             role="menuitem"
             tabIndex="-1"
             onClick={this.handleItemClick}
+            innerRef={this.childRefs[1]}
           >
             medium
           </MenuItem>
@@ -123,6 +146,7 @@ class Menu extends Component {
             role="menuitem"
             tabIndex="-1"
             onClick={this.handleItemClick}
+            innerRef={this.childRefs[2]}
           >
             hard
           </MenuItem>
