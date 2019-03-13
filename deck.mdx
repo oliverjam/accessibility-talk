@@ -1,4 +1,4 @@
-export { swiss as theme } from 'mdx-deck/themes'
+export { swiss as theme } from 'mdx-deck/themes';
 
 # Accessibility for Everyone
 
@@ -19,7 +19,7 @@ export { swiss as theme } from 'mdx-deck/themes'
 
 ## The web rules
 
-It's special. Remember how things used to be?
+Imagine a distant past...
 
 ```notes
 SENSORY DEPRIVATION TANK
@@ -33,7 +33,7 @@ SENSORY DEPRIVATION TANK
 
 > The web has everything we know on it, and you can read it all. _Nothing's stopping you_. Maybe the fact that that still blows my mind marks me as an old fogey, but honestly, how can that not?
 
-—<cite>[@seldo](http://seldo.com/weblog/2013/09/04/why_i_am_a_web_developer), npm <abbr>CTO</abbr></cite>
+—<cite>[@seldo](http://seldo.com/weblog/2013/09/04/why_i_am_a_web_developer), npm founder</cite>
 
 Something _is_ stopping people.
 
@@ -298,6 +298,10 @@ To meet guidelines sites should be:
 - **U**nderstandable
 - **R**obust
 
+```notes
+also increasingly a legal requirement
+```
+
 ---
 
 ### Cheatsheet
@@ -324,7 +328,7 @@ e.g. ensure keyboard functionality, no unnecessary time-limits, descriptive link
 
 ---
 
-#### Operable
+#### Understandable
 
 Can all your users understand the content and how to use the interface?
 
@@ -360,7 +364,11 @@ Turns div-soup into something a screenreader can understand.
 
 Visually obvious content might need a text label.
 
-e.g. `<button aria-label="menu button">☰</button>`
+e.g. `<button aria-label="toggle menu">☰</button>`
+
+```notes
+trigram for heaven
+```
 
 ---
 
@@ -382,10 +390,6 @@ Ensures dynamically updated content is read out.
 
 ---
 
-![](assets/roles.png)
-
----
-
 ## How do we test accessibility?
 
 ---
@@ -395,6 +399,11 @@ Ensures dynamically updated content is read out.
 Actually use your UI!
 
 Unplug your mouse. Try browser extensions that simulate visual conditions.
+
+```notes
+This is what I mean when I say a11y is design
+Good designs account for all states and edge-cases
+```
 
 ---
 
@@ -410,9 +419,13 @@ Chrome Lighthouse, pa11y, aXe.
 
 ### Menu button
 
-import Menu from './examples/Menu'
+import Menu from './examples/Menu';
 
 <Menu />
+
+```notes
+Arrow icon provides same information as aria-haspopup and aria-expanded
+```
 
 ---
 
@@ -424,7 +437,7 @@ Without JS most ARIA attributes are useless or actively harmful
 
 ### Tabs
 
-import Tabs from './examples/Tabs'
+import Tabs from './examples/Tabs';
 
 <Tabs />
 
